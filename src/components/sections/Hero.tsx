@@ -1,111 +1,59 @@
-"use client";
-
-import { motion } from "framer-motion";
-import heroBg from "@/assets/hero-bg.jpg";
-
-const avatars = [
-  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
-];
+import { landingCopy } from "@/data/landingCopy";
+import { Phone } from "@/components/ui/Phone";
 
 export function Hero() {
+  const t = landingCopy;
+
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
-      {/* Background image */}
-      <div className="absolute inset-0">
-        <img
-          src={typeof heroBg === "string" ? heroBg : heroBg.src}
-          alt=""
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-foreground/40 via-foreground/15 to-foreground/50" />
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 text-center px-5 max-w-3xl mx-auto">
-        <motion.h1
-          className="font-display text-display-xl text-primary-foreground mb-5"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-        >
-          Nunca mais perca dinheiro
-        </motion.h1>
-
-        <motion.p
-          className="text-base md:text-lg text-primary-foreground/60 max-w-md mx-auto mb-10 leading-relaxed"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          Você não controla seu dinheiro. A Uora te mostra como mudar isso.
-        </motion.p>
-
-        <motion.div
-          className="flex flex-col sm:flex-row items-center justify-center gap-3"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-        >
-          <a
-            href="#planos"
-            className="pill-button bg-primary-foreground text-foreground px-8 py-4 text-sm font-semibold"
-          >
-            Começar agora →
-          </a>
-          <a
-            href="#como-funciona"
-            className="pill-button border border-primary-foreground/30 text-primary-foreground/90 hover:text-primary-foreground hover:border-primary-foreground/60 hover:bg-primary-foreground/10 px-6 py-4 text-sm transition-all duration-300 backdrop-blur-sm"
-          >
-            Ver como funciona
-          </a>
-        </motion.div>
-
-        {/* Social proof */}
-        <motion.div
-          className="flex items-center justify-center gap-3 mt-10"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.1 }}
-        >
-          <div className="flex -space-x-2">
-            {avatars.map((src, i) => (
-              <img
-                key={i}
-                src={src}
-                alt=""
-                className="w-8 h-8 rounded-full border-2 border-primary-foreground/20 object-cover"
-              />
-            ))}
+    <>
+      <section className="relative overflow-hidden pt-16 sm:pt-24">
+        <div className="mx-auto max-w-5xl text-center">
+          <h1 className="text-[48px] font-semibold leading-[0.96] tracking-[-0.06em] text-white sm:text-[78px] lg:text-[92px]">
+            {t.heroTitle}
+          </h1>
+          <p className="mx-auto mt-6 max-w-[720px] text-[15px] leading-7 text-white/58 sm:text-[18px]">
+            {t.heroSubtitle}
+          </p>
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <button
+              type="button"
+              className="rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-black transition hover:scale-[1.02]"
+            >
+              {t.heroCta}
+            </button>
+            <a
+              href="#how"
+              className="rounded-full border border-white/10 bg-white/[0.03] px-6 py-3.5 text-sm font-medium text-white/85 transition hover:bg-white/[0.06]"
+            >
+              {t.heroSecondary}
+            </a>
           </div>
-          <div className="text-left">
-            <p className="text-xs text-primary-foreground/70 font-medium">
-              ★★★★★
-            </p>
-            <p className="text-[11px] text-primary-foreground/40">
-              +700 pessoas organizam suas finanças
-            </p>
-          </div>
-        </motion.div>
-      </div>
+        </div>
+      </section>
 
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-primary-foreground/40"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.4 }}
-      >
-        <motion.div className="w-5 h-8 rounded-full border border-primary-foreground/20 flex items-start justify-center p-1.5">
-          <motion.div
-            className="w-1 h-1.5 rounded-full bg-primary-foreground/50"
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
-          />
-        </motion.div>
-      </motion.div>
-    </section>
+      <section className="relative pt-16 sm:pt-20">
+        <div className="flex justify-center">
+          <div className="relative z-10">
+            <div className="absolute -translate-x-[84%] -left-[84%] top-20 z-20 hidden animate-floatSlow rounded-[28px] border border-white/10 bg-white/[0.05] px-5 py-4 backdrop-blur-xl sm:block">
+              <div className="text-[11px] uppercase tracking-[0.22em] text-white/35">
+                Open Finance
+              </div>
+              <div className="mt-2 text-sm text-white/70">
+                Conecte contas e veja tudo em um só lugar
+              </div>
+            </div>
+            <div className="absolute -right-[99%] translate-x-[99%] bottom-24 z-20 hidden animate-floatFast rounded-[28px] border border-white/10 bg-white/[0.05] px-5 py-4 backdrop-blur-xl sm:block">
+              <div className="text-[11px] uppercase tracking-[0.22em] text-white/35">
+                IA Uora
+              </div>
+              <div className="mt-2 text-sm text-white/70">
+                Analisa desperdícios e pontos para serem melhorados
+              </div>
+            </div>
+            <Phone variant="dashboard" />
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

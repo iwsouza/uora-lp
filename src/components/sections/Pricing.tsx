@@ -1,193 +1,89 @@
-"use client";
-
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Reveal } from "@/components/Reveal";
-import { Check, X } from "lucide-react";
-
-const plans = [
-  {
-    name: "Básico",
-    price: { m: 19, y: 15 },
-    desc: "Para começar a organizar suas finanças",
-    features: [
-      { t: "Análise com IA", ok: true },
-      { t: "1 banco conectado", ok: true },
-      { t: "Dashboard básico", ok: true },
-      { t: "Limite de conversas", ok: true },
-      { t: "Alertas inteligentes", ok: false },
-      { t: "Relatórios avançados", ok: false },
-    ],
-    cta: "Começar agora",
-    pop: false,
-  },
-  {
-    name: "Pro",
-    price: { m: 39, y: 31 },
-    desc: "Conecte até 5 bancos com controle avançado",
-    features: [
-      { t: "Até 5 bancos conectados", ok: true },
-      { t: "Conversas ilimitadas", ok: true },
-      { t: "Alertas inteligentes", ok: true },
-      { t: "Lembretes de pagamentos", ok: true },
-      { t: "Relatórios personalizados", ok: true },
-      { t: "Categorias ilimitadas", ok: true },
-    ],
-    cta: "Seja Pro",
-    pop: true,
-  },
-  {
-    name: "Premium",
-    price: { m: 199, y: 159 },
-    desc: "Bancos ilimitados e visão completa",
-    features: [
-      { t: "Tudo do Pro", ok: true },
-      { t: "Bancos ilimitados", ok: true },
-      { t: "Assessor dedicado", ok: true },
-      { t: "Acesso prioritário a novidades", ok: true },
-      { t: "Suporte premium", ok: true },
-      { t: "Estratégia personalizada", ok: true },
-    ],
-    cta: "Assine o Premium",
-    pop: false,
-  },
-];
+import { cn } from "@/lib/utils";
+import { landingCopy } from "@/data/landingCopy";
+import { Shell } from "@/components/ui/Shell";
 
 export function Pricing() {
-  const [yearly, setYearly] = useState(true);
+  const t = landingCopy;
+  const plans = [
+    {
+      name: t.plan1,
+      price: "R$17",
+      desc: t.plan1Desc,
+      features: [t.plan1F1, t.plan1F2, t.plan1F3, t.plan1F4],
+      highlighted: false,
+    },
+    {
+      name: t.plan2,
+      price: "R$29",
+      desc: t.plan2Desc,
+      features: [t.plan2F1, t.plan2F2, t.plan2F3, t.plan2F4],
+      highlighted: true,
+    },
+    {
+      name: t.plan3,
+      price: "R$42",
+      desc: t.plan3Desc,
+      features: [t.plan3F1, t.plan3F2, t.plan3F3, t.plan3F4],
+      highlighted: false,
+    },
+  ] as const;
 
   return (
-    <section className="py-24 md:py-36 bg-card" id="planos">
-      <div className="container">
-        <Reveal>
-          <div className="text-center mb-12">
-            <h2 className="font-display text-display-lg text-foreground mb-3">
-              Seja membro da Uora
-            </h2>
-            <p className="text-muted-foreground text-base">
-              Selecione o plano perfeito para entender seu dinheiro
-            </p>
-          </div>
-        </Reveal>
+    <section id="pricing" className="pt-24 sm:pt-32">
+      <div className="text-center">
+        <h2 className="mt-4 text-4xl font-semibold tracking-[-0.05em] text-white sm:text-6xl">
+          {t.pricingTitle}
+        </h2>
+        <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/58 sm:text-lg">
+          {t.pricingSubtitle}
+        </p>
+      </div>
 
-        <Reveal delay={0.1}>
-          <div className="flex items-center justify-center gap-4 mb-14">
-            <button
-              onClick={() => setYearly(true)}
-              className={`text-sm px-4 py-2 rounded-full transition-all ${yearly ? "bg-foreground text-background font-medium" : "text-muted-foreground"}`}
-            >
-              Anual <span className="text-[10px] opacity-70">ATÉ 20% OFF</span>
-            </button>
-            <button
-              onClick={() => setYearly(false)}
-              className={`text-sm px-4 py-2 rounded-full transition-all ${!yearly ? "bg-foreground text-background font-medium" : "text-muted-foreground"}`}
-            >
-              Mensal
-            </button>
-          </div>
-        </Reveal>
-
-        <div className="grid md:grid-cols-3 gap-5 max-w-5xl mx-auto">
-          {plans.map((plan, i) => (
-            <Reveal key={plan.name} delay={i * 0.1}>
-              <div
-                className={`rounded-3xl p-8 h-full flex flex-col border transition-all duration-300 ${
-                  plan.pop
-                    ? "bg-foreground text-background border-foreground shadow-2xl md:-mt-4 md:pb-12"
-                    : "bg-background border-border"
-                }`}
-              >
-                {plan.pop && (
-                  <span className="inline-flex self-start text-[10px] font-semibold uppercase tracking-widest text-background/60 bg-background/10 px-3 py-1 rounded-full mb-4">
-                    Mais Popular
-                  </span>
-                )}
-                <h3
-                  className={`font-display text-xl ${plan.pop ? "text-background" : "text-foreground"}`}
-                >
-                  {plan.name}
-                </h3>
-                <p
-                  className={`text-xs mt-1 mb-5 ${plan.pop ? "text-background/50" : "text-muted-foreground"}`}
-                >
-                  {plan.desc}
-                </p>
-
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={yearly ? "y" : "m"}
-                    initial={{ opacity: 0, y: -8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 8 }}
-                    transition={{ duration: 0.2 }}
-                    className="mb-6"
-                  >
-                    {plan.price.m === 0 ? (
-                      <span
-                        className={`text-3xl font-display ${plan.pop ? "text-background" : "text-foreground"}`}
-                      >
-                        Grátis
-                      </span>
-                    ) : (
-                      <div className="flex items-baseline gap-1">
-                        <span
-                          className={`text-3xl font-display ${plan.pop ? "text-background" : "text-foreground"}`}
-                        >
-                          R$ {yearly ? plan.price.y : plan.price.m}
-                        </span>
-                        <span
-                          className={`text-sm ${plan.pop ? "text-background/50" : "text-muted-foreground"}`}
-                        >
-                          /mês
-                        </span>
-                      </div>
-                    )}
-                  </motion.div>
-                </AnimatePresence>
-
-                <ul className="space-y-3 mb-8 flex-1">
-                  {plan.features.map((f) => (
-                    <li key={f.t} className="flex items-start gap-2.5 text-sm">
-                      {f.ok ? (
-                        <Check
-                          className={`w-4 h-4 mt-0.5 shrink-0 ${plan.pop ? "text-green-positive" : "text-green-positive"}`}
-                        />
-                      ) : (
-                        <X
-                          className={`w-4 h-4 mt-0.5 shrink-0 ${plan.pop ? "text-background/20" : "text-muted-foreground/30"}`}
-                        />
-                      )}
-                      <span
-                        className={
-                          f.ok
-                            ? plan.pop
-                              ? "text-background/80"
-                              : "text-foreground/80"
-                            : plan.pop
-                              ? "text-background/30"
-                              : "text-muted-foreground/40"
-                        }
-                      >
-                        {f.t}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-
-                <a
-                  href="#"
-                  className={`pill-button w-full py-3.5 text-sm font-medium ${
-                    plan.pop
-                      ? "bg-background text-foreground"
-                      : "pill-button-outline"
-                  }`}
-                >
-                  {plan.cta}
-                </a>
+      <div className="mt-10 grid gap-4 lg:grid-cols-3">
+        {plans.map((plan) => (
+          <Shell
+            key={plan.name}
+            className={cn(
+              "relative p-6 sm:p-7",
+              plan.highlighted && "border-white/25 ring-1 ring-white/15",
+            )}
+          >
+            {plan.highlighted && (
+              <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/12 bg-white/90 px-4 py-1 text-[11px] uppercase tracking-[0.18em] text-gray-900 backdrop-blur-xl">
+                {t.popular}
               </div>
-            </Reveal>
-          ))}
-        </div>
+            )}
+            <div className="mt-5 text-[28px] font-semibold tracking-[-0.04em] text-white">
+              {plan.name}
+            </div>
+            <div className="mt-4 flex items-end gap-1">
+              <span className="text-5xl font-semibold tracking-[-0.06em] text-white">
+                {plan.price}
+              </span>
+              <span className="pb-1 text-white/38">/mês</span>
+            </div>
+            <p className="mt-4 text-sm leading-6 text-white/54">{plan.desc}</p>
+            <ul className="mt-6 space-y-3 text-sm text-white/78">
+              {plan.features.map((feature) => (
+                <li key={feature} className="flex items-start gap-3">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/78" />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+            <button
+              type="button"
+              className={cn(
+                "mt-8 w-full rounded-full px-5 py-3.5 text-sm font-semibold transition",
+                plan.highlighted
+                  ? "bg-white text-black hover:scale-[1.02]"
+                  : "border border-white/10 bg-white/[0.04] text-white hover:bg-white/[0.07]",
+              )}
+            >
+              {t.heroCta}
+            </button>
+          </Shell>
+        ))}
       </div>
     </section>
   );

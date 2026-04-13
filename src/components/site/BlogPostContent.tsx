@@ -158,8 +158,8 @@ export function BlogPostContent({ post }: { post: BlogPost }) {
             <p className="text-sm text-muted-foreground mb-6">
               Conecte seus bancos ao Uora e veja seus gastos organizados em segundos.
             </p>
-            <Link href="/#planos" className="pill-button-dark px-8 py-3.5 text-sm font-medium">
-              Ver planos →
+            <Link href="/" className="pill-button-dark px-8 py-3.5 text-sm font-medium">
+              Começar grátis →
             </Link>
           </motion.div>
 

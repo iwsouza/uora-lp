@@ -1,18 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from 'framer-motion';
-import { blogPosts } from '@/data/blogPosts';
-import { ArrowRight, Clock } from 'lucide-react';
+import { motion } from "framer-motion";
+import { blogPosts } from "@/data/blogPosts";
+import { ArrowRight, Clock } from "lucide-react";
 
-const BlogPage = () => {
+export default function BlogPage() {
   return (
     <div className="min-h-screen bg-background">
-      {/* Navbar */}
-      <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
+      <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl">
         <div className="container flex items-center justify-between py-4">
           <Link href="/" className="font-display text-xl tracking-tight">
-            <span className="bg-foreground text-background px-3 py-1.5 rounded-full text-sm font-body font-medium">
+            <span className="rounded-full bg-foreground px-3 py-1.5 font-body text-sm font-medium text-background">
               uora
             </span>
           </Link>
@@ -22,7 +21,6 @@ const BlogPage = () => {
         </div>
       </header>
 
-      {/* Hero */}
       <section className="py-20 md:py-28">
         <div className="container max-w-4xl">
           <motion.div
@@ -30,22 +28,22 @@ const BlogPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accent mb-4">Blog Uora</p>
-            <h1 className="font-display text-display-xl text-foreground mb-5">
-              Educação financeira<br />
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-accent">Blog Uora</p>
+            <h1 className="font-display mb-5 text-display-xl text-foreground">
+              Educação financeira
+              <br />
               <span className="text-muted-foreground/40">que faz sentido.</span>
             </h1>
-            <p className="text-muted-foreground text-base md:text-lg max-w-xl leading-relaxed">
+            <p className="max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
               Artigos práticos, sem enrolação, pra você tomar decisões melhores sobre o seu dinheiro.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Posts Grid */}
       <section className="pb-24 md:pb-36">
         <div className="container max-w-5xl">
-          <div className="grid md:grid-cols-2 gap-5">
+          <div className="grid gap-5 md:grid-cols-2">
             {blogPosts.map((post, i) => (
               <motion.div
                 key={post.slug}
@@ -53,36 +51,31 @@ const BlogPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
               >
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="group block h-full"
-                >
-                  <div className="rounded-3xl border border-border bg-card p-8 h-full flex flex-col transition-all duration-500 hover:border-foreground/15 hover:shadow-xl hover:-translate-y-1">
-                    <div className="flex items-center justify-between mb-5">
+                <Link href={`/blog/${post.slug}`} className="group block h-full">
+                  <div className="flex h-full flex-col rounded-3xl border border-border bg-card p-8 transition-all duration-500 hover:-translate-y-1 hover:border-foreground/15 hover:shadow-xl">
+                    <div className="mb-5 flex items-center justify-between">
                       <span className="text-3xl">{post.heroEmoji}</span>
-                      <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground bg-muted px-3 py-1 rounded-full">
+                      <span className="rounded-full bg-muted px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
                         {post.category}
                       </span>
                     </div>
 
-                    <h2 className="font-display text-xl text-foreground mb-3 group-hover:text-accent transition-colors duration-300 leading-tight">
+                    <h2 className="font-display mb-3 text-xl leading-tight text-foreground transition-colors duration-300 group-hover:text-accent">
                       {post.title}
                     </h2>
 
-                    <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1">
-                      {post.description}
-                    </p>
+                    <p className="mb-6 flex-1 text-sm leading-relaxed text-muted-foreground">{post.description}</p>
 
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3 text-xs text-muted-foreground">
                         <span>{post.date}</span>
                         <span className="flex items-center gap-1">
-                          <Clock className="w-3 h-3" />
+                          <Clock className="h-3 w-3" />
                           {post.readTime}
                         </span>
                       </div>
-                      <span className="text-sm text-foreground/60 group-hover:text-accent transition-colors flex items-center gap-1">
-                        Ler <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                      <span className="flex items-center gap-1 text-sm text-foreground/60 transition-colors group-hover:text-accent">
+                        Ler <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                       </span>
                     </div>
                   </div>
@@ -93,22 +86,19 @@ const BlogPage = () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="section-dark py-20 rounded-t-[2rem]">
-        <div className="container text-center max-w-xl">
-          <h2 className="font-display text-display-lg text-dark-section-foreground mb-4">
-            Leitura é poder.<br />Ação é liberdade.
+      <section className="section-dark rounded-t-[2rem] py-20">
+        <div className="container max-w-xl text-center">
+          <h2 className="font-display mb-4 text-display-lg text-dark-section-foreground">
+            Leitura é poder.
+            <br />
+            Ação é liberdade.
           </h2>
-          <p className="text-dark-section-foreground/50 text-sm mb-8">
-            Comece a organizar suas finanças agora com o Uora.
-          </p>
-          <Link href="/" className="pill-button bg-primary-foreground text-foreground px-8 py-3.5 text-sm font-medium">
+          <p className="mb-8 text-sm text-dark-section-foreground/50">Comece a organizar suas finanças agora com o Uora.</p>
+          <Link href="/" className="pill-button bg-primary-foreground px-8 py-3.5 text-sm font-medium text-foreground">
             Conhecer o Uora →
           </Link>
         </div>
       </section>
     </div>
   );
-};
-
-export default BlogPage;
+}
