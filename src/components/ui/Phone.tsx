@@ -36,7 +36,7 @@ export function Phone({ variant = "dashboard" }: PhoneProps) {
                     {[34, 58, 44, 72, 60, 90, 68].map((h, i) => (
                       <div
                         key={i}
-                        className="flex-1 rounded-t-sm bg-white/80"
+                        className="flex-1 rounded-t-[4px] bg-white/80"
                         style={{ height: `${h}%`, opacity: i === 5 ? 1 : 0.5 }}
                       />
                     ))}
