@@ -36,7 +36,7 @@ export function Phone({ variant = "dashboard" }: PhoneProps) {
                     {[34, 58, 44, 72, 60, 90, 68].map((h, i) => (
                       <div
                         key={i}
-                        className="flex-1 rounded-t-[14px] bg-white/80"
+                        className="flex-1 rounded-t-sm bg-white/80"
                         style={{ height: `${h}%`, opacity: i === 5 ? 1 : 0.5 }}
                       />
                     ))}
@@ -49,14 +49,18 @@ export function Phone({ variant = "dashboard" }: PhoneProps) {
                       Assinaturas
                     </div>
                     <div className="mt-2 text-2xl font-semibold">6</div>
-                    <div className="mt-2 text-xs text-white/45">2 podem ser cortadas</div>
+                    <div className="mt-2 text-xs text-white/45">
+                      2 podem ser cortadas
+                    </div>
                   </div>
                   <div className="rounded-[24px] border border-white/8 bg-white/[0.04] p-4">
                     <div className="text-[11px] uppercase tracking-[0.2em] text-white/35">
                       Desvios
                     </div>
                     <div className="mt-2 text-2xl font-semibold">3</div>
-                    <div className="mt-2 text-xs text-white/45">acima do padrão</div>
+                    <div className="mt-2 text-xs text-white/45">
+                      acima do padrão
+                    </div>
                   </div>
                 </div>
 
@@ -77,7 +81,9 @@ export function Phone({ variant = "dashboard" }: PhoneProps) {
                       >
                         <div>
                           <div className="text-sm font-medium">{name}</div>
-                          <div className="text-xs text-white/35">Categoria automática</div>
+                          <div className="text-xs text-white/35">
+                            Categoria automática
+                          </div>
                         </div>
                         <div className="text-sm font-semibold">{value}</div>
                       </div>
