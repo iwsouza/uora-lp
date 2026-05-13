@@ -1,5 +1,6 @@
+import Image from "next/image";
 import { landingCopy } from "@/data/landingCopy";
-import { Phone } from "@/components/ui/Phone";
+import uoraHero from "@/assets/uora-hero.png";
 
 export function Hero() {
   const t = landingCopy;
@@ -34,7 +35,7 @@ export function Hero() {
       <section className="relative pt-16 sm:pt-20">
         <div className="flex justify-center">
           <div className="relative z-10">
-            <div className="absolute -translate-x-[84%] -left-[84%] top-20 z-20 hidden animate-floatSlow rounded-[28px] border border-white/10 bg-white/[0.05] px-5 py-4 backdrop-blur-xl sm:block">
+            <div className="absolute -translate-x-[84%] -left-[40%] top-20 z-20 hidden animate-floatSlow rounded-[28px] border border-white/10 bg-white/[0.05] px-5 py-4 backdrop-blur-xl sm:block">
               <div className="text-[11px] uppercase tracking-[0.22em] text-white/35">
                 Open Finance
               </div>
@@ -42,15 +43,26 @@ export function Hero() {
                 Conecte contas e veja tudo em um só lugar
               </div>
             </div>
-            <div className="absolute -right-[99%] translate-x-[99%] bottom-24 z-20 hidden animate-floatFast rounded-[28px] border border-white/10 bg-white/[0.05] px-5 py-4 backdrop-blur-xl sm:block">
+            <div className="absolute -right-[54%] translate-x-[99%] bottom-24 z-20 hidden animate-floatFast rounded-[28px] border border-white/10 bg-white/[0.05] px-5 py-4 backdrop-blur-xl sm:block">
               <div className="text-[11px] uppercase tracking-[0.22em] text-white/35">
-                IA Uora
+                Inteligência Uora
               </div>
               <div className="mt-2 text-sm text-white/70">
                 Analisa desperdícios e pontos para serem melhorados
               </div>
             </div>
-            <Phone variant="dashboard" />
+            <div className="relative mx-auto w-[360px] sm:w-[640px]">
+              <div className="absolute z-[1] inset-0 scale-[1.06] rounded-[44px] bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,.18),rgba(255,255,255,0)_55%)] blur-2xl" />
+              <Image
+                src={uoraHero}
+                alt="Interface do painel Uora no celular, com saldo e fluxo do mês"
+                width={791}
+                height={1431}
+                className="h-auto w-full select-none relative z-[2]"
+                priority
+                sizes="(min-width: 791px) 440px, 360px"
+              />
+            </div>
           </div>
         </div>
       </section>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { landingCopy } from "@/data/landingCopy";
 
 export function Footer() {
@@ -14,19 +15,25 @@ export function Footer() {
           <div className="mb-3 text-sm font-semibold text-white">Produto</div>
           <ul className="space-y-2 text-sm">
             <li>
-              <a href="#features" className="transition hover:text-white/70">
+              <Link
+                href="/#features"
+                className="transition hover:text-white/70"
+              >
                 {t.navFeatures}
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#how" className="transition hover:text-white/70">
+              <Link href="/#how" className="transition hover:text-white/70">
                 {t.navHow}
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#pricing" className="transition hover:text-white/70">
+              <Link
+                href="/#pricing"
+                className="transition hover:text-white/70"
+              >
                 {t.navPlans}
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

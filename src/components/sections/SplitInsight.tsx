@@ -1,5 +1,6 @@
+import Image from "next/image";
 import { landingCopy } from "@/data/landingCopy";
-import { Phone } from "@/components/ui/Phone";
+import losingMoney from "@/assets/losing-money.png";
 
 export function SplitInsight() {
   const t = landingCopy;
@@ -15,7 +16,17 @@ export function SplitInsight() {
           <p className="mt-5 text-base leading-7 text-white/58 sm:text-lg">{t.split2Text}</p>
         </div>
         <div>
-          <Phone variant="insight" />
+          <div className="relative mx-auto w-[360px] sm:w-[420px]">
+            <div className="absolute z-[1] inset-0 scale-[1.06] rounded-[44px] bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,.18),rgba(255,255,255,0)_55%)] blur-2xl" />
+            <Image
+              src={losingMoney}
+              alt="Tela de alerta: comparação com a média, assinaturas e economia potencial"
+              width={753}
+              height={1492}
+              className="relative z-[2] h-auto w-full select-none"
+              sizes="(min-width: 640px) 640px, 360px"
+            />
+          </div>
         </div>
       </div>
     </section>

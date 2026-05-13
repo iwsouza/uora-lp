@@ -51,6 +51,12 @@
   }
   html {
     overflow-x: clip;
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
   body {
     @apply bg-background text-foreground antialiased;
@@ -67,7 +73,7 @@
 }
 
 .pill-button {
-  @apply inline-flex items-center justify-center rounded-full font-medium transition-all duration-300 cursor-pointer select-none;
+  @apply inline-flex items-center justify-center rounded-[2px] font-medium transition-all duration-300 cursor-pointer select-none;
 }
 .pill-button-dark {
   @apply pill-button bg-foreground text-background;

@@ -6,7 +6,7 @@ export function Header() {
 
   return (
     <header className="sticky top-4 z-50">
-      <Shell className="px-4 py-3 sm:px-6">
+      <Shell className="rounded-xl px-4 py-3 sm:px-6">
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-3">
             <div>

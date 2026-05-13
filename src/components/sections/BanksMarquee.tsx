@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { ReactNode } from "react";
 import { landingCopy } from "@/data/landingCopy";
 
@@ -13,7 +14,7 @@ const banks = [
 
 function LogoMark({ children }: { children: ReactNode }) {
   return (
-    <div className="flex h-20 min-w-[164px] items-center justify-center rounded-[24px] border border-white/8 bg-white/[0.03] px-7 text-white/92 backdrop-blur-xl">
+    <div className="flex h-20 min-w-[164px] items-center justify-center px-7 text-white/92">
       {children}
     </div>
   );
@@ -40,11 +41,12 @@ export function BanksMarquee() {
           <div className="flex w-max animate-marqueeRight gap-4 will-change-transform">
             {row.map((bank, index) => (
               <LogoMark key={`${bank.name}-${index}`}>
-                <img
+                <Image
                   src={bank.src}
                   alt={bank.name}
+                  width={120}
+                  height={44}
                   className="max-h-11 w-auto max-w-[120px] object-contain opacity-95"
-                  loading="lazy"
                 />
               </LogoMark>
             ))}
