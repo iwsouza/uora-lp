@@ -1,4 +1,5 @@
 import { landingCopy } from "@/data/landingCopy";
+import { APP_SIGNUP_URL } from "@/data/urls";
 import { Shell } from "@/components/ui/Shell";
 
 export function FinalCTA() {
@@ -17,12 +18,12 @@ export function FinalCTA() {
             </p>
           </div>
           <div className="flex justify-start lg:justify-end">
-            <button
-              type="button"
+            <a
+              href={APP_SIGNUP_URL}
               className="rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-black transition hover:scale-[1.02]"
             >
               {t.finalCta}
-            </button>
+            </a>
           </div>
         </div>
       </Shell>

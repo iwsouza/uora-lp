@@ -1,4 +1,5 @@
 import { landingCopy } from "@/data/landingCopy";
+import { APP_SIGNUP_URL } from "@/data/urls";
 import { Shell } from "@/components/ui/Shell";
 
 export function Header() {
@@ -28,12 +29,12 @@ export function Header() {
             </a>
           </nav>
 
-          <button
-            type="button"
+          <a
+            href={APP_SIGNUP_URL}
             className="rounded-full bg-white px-4 py-2 text-sm font-medium text-black transition hover:scale-[1.02] sm:px-5"
           >
             {t.heroCta}
-          </button>
+          </a>
         </div>
       </Shell>
     </header>

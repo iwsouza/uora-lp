@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { landingCopy } from "@/data/landingCopy";
+import { APP_SIGNUP_URL } from "@/data/urls";
 import { Shell } from "@/components/ui/Shell";
 
 const BRL = new Intl.NumberFormat("pt-BR", {
@@ -203,17 +204,17 @@ export function Pricing() {
                   ))}
                 </ul>
               </div>
-              <button
-                type="button"
+              <a
+                href={APP_SIGNUP_URL}
                 className={cn(
-                  "mt-6 w-full shrink-0 rounded-full px-5 py-3.5 text-base font-semibold transition sm:mt-8 sm:py-4 sm:text-lg",
+                  "mt-6 flex w-full shrink-0 items-center justify-center rounded-full px-5 py-3.5 text-base font-semibold transition sm:mt-8 sm:py-4 sm:text-lg",
                   plan.highlighted
                     ? "bg-white text-black hover:scale-[1.01]"
                     : "border border-white/10 bg-white/[0.04] text-white hover:bg-white/[0.07]",
                 )}
               >
                 {t.heroCta}
-              </button>
+              </a>
             </Shell>
           );
         })}

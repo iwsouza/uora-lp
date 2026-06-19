@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { landingCopy } from "@/data/landingCopy";
+import { APP_SIGNUP_URL } from "@/data/urls";
 import uoraHero from "@/assets/uora-hero.png";
 
 export function Hero() {
@@ -16,12 +17,12 @@ export function Hero() {
             {t.heroSubtitle}
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <button
-              type="button"
+            <a
+              href={APP_SIGNUP_URL}
               className="rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-black transition hover:scale-[1.02]"
             >
               {t.heroCta}
-            </button>
+            </a>
             <a
               href="#how"
               className="rounded-full border border-white/10 bg-white/[0.03] px-6 py-3.5 text-sm font-medium text-white/85 transition hover:bg-white/[0.06]"

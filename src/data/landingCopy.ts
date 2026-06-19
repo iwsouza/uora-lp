@@ -12,7 +12,7 @@ export const landingCopy = {
     "A Uora te mostra o que acontece com o seu dinheiro, identifica padrões e transforma a sua vida financeira em visão estratégica",
   card1Title: "Salve seus gastos facilmente",
   card1Text: "Chat, voz ou manual. O controle acompanha seu ritmo.",
-  card2Title: "Acompanhamento linha a linha do seu comportamento",
+  card2Title: "Acompanhe seu comportamento linha a linha",
   card2Text: "Categorias, hábitos e assinaturas em uma visão clara.",
   card3Title: "Descubra antes o que você nem saberia",
   card3Text: "Entenda antes o que normalmente você só descobriria depois.",

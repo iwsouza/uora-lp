@@ -27,7 +27,6 @@ export function HomePage() {
           <SplitInsight />
           <HowItWorks />
           <Pricing />
-          <FinalCTA />
         </main>
         <Footer />
       </div>

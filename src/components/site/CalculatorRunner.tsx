@@ -16,6 +16,7 @@ import type {
   CalcScenarioRow,
   CalculatorDefinition,
 } from "@/lib/calculators/types";
+import { APP_SIGNUP_URL } from "@/data/urls";
 
 function ScenarioComparePanel({
   title,
@@ -296,12 +297,12 @@ function CalculatorTopCtaBar({ automotive }: { automotive: boolean }) {
             </>
           )}
         </p>
-        <Link
-          href="/"
+        <a
+          href={APP_SIGNUP_URL}
           className="inline-flex min-h-[48px] shrink-0 items-center justify-center rounded-full bg-foreground px-8 py-3.5 text-center text-base font-semibold text-background transition hover:opacity-90 active:scale-[0.98] sm:min-w-[200px]"
         >
           Começar no Uora
-        </Link>
+        </a>
       </div>
     </div>
   );
